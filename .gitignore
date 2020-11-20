@@ -24,6 +24,8 @@ yarn-error.log*
 
 /public/main.css
 
+/.firebase
+
 # IntelliJ IDEA
 .idea
 *.iml
