@@ -1,6 +1,11 @@
+import React, { ReactNode } from "react";
 import cx from "classnames";
 
-export default function Main({ children }) {
+type Props = {
+  children: ReactNode;
+};
+
+export default function Main({ children }: Props) {
   return (
     <main
       className={cx(
