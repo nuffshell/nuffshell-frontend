@@ -1,6 +1,13 @@
 import cx from "classnames";
+import React, { ReactNode } from "react";
 
-export default function MainHeadline({ id, className, children }) {
+type Props = {
+  id?: string;
+  className?: string;
+  children: ReactNode;
+};
+
+export default function MainHeadline({ id, className, children }: Props) {
   return (
     <h1
       id={id}
