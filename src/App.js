@@ -1,7 +1,12 @@
+import cx from "classnames";
+import { Main,MainHeadline } from "./ui";
+
 function App() {
   return (
-    <div className="App">
-        <h1>nuffshell</h1>
+    <div className={cx("app", "bg-red-100")}>
+      <Main>
+        <MainHeadline>nuffshell</MainHeadline>
+      </Main>
     </div>
   );
 }
