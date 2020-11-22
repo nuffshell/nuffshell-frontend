@@ -4,7 +4,7 @@ import React from "react";
 
 function App() {
   return (
-    <div className={cx("app", "bg-red-100")}>
+    <div className={cx("app")}>
       <Main>
         <MainHeadline>nuffshell</MainHeadline>
       </Main>

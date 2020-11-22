@@ -5,4 +5,5 @@
 .app {
   position: relative;
   min-height: 100vh;
+ @apply bg-red-100;
 }
