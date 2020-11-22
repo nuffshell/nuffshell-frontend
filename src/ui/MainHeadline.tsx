@@ -21,7 +21,8 @@ export default function MainHeadline({ id, className, children }: Props) {
         "border-4",
         "border-red-200",
         "p-4",
-        "rounded-lg"
+        "rounded-lg",
+        "mb-6"
       )}
     >
       {children}
