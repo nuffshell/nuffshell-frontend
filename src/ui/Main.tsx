@@ -7,7 +7,19 @@ type Props = {
 
 export default function Main({ children }: Props) {
   return (
-    <main className={cx("p-4", "sm:p-8", "pb-14", "mx-auto", "max-w-3xl")}>
+    <main
+      className={cx(
+        "pt-4",
+        "pl-4",
+        "pr-4",
+        "sm:pt-8",
+        "sm:pl-8",
+        "sm:pr-8",
+        "pb-16",
+        "mx-auto",
+        "max-w-3xl"
+      )}
+    >
       {children}
     </main>
   );

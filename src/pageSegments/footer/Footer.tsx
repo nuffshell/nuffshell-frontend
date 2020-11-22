@@ -9,7 +9,7 @@ export default function Footer() {
         "bottom-0",
         "bg-red-800",
         "p-4",
-        "text-white",
+        "text-yellow-400",
         "min-w-full"
       )}
     >

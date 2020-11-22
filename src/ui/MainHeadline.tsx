@@ -13,9 +13,9 @@ export default function MainHeadline({ id, className, children }: Props) {
       id={id}
       className={cx(
         className,
+        "font-display",
         "text-xl",
         "md:text-3xl",
-        "font-bold",
         "text-red-800",
         "border-solid",
         "border-4",
