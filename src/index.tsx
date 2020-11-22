@@ -3,6 +3,14 @@ import ReactDOM from "react-dom";
 import "./main.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import "./learningTypeScript/extendsAndImplements";
+import "./learningTypeScript/interface";
+import "./learningTypeScript/intersection";
+import "./learningTypeScript/tuple";
+import "./learningTypeScript/interfaceWithClass";
+import "./learningTypeScript/interfacesWithFunctions";
+import "./learningTypeScript/typesWithFunctions";
+import "./learningTypeScript/interfaceWithGenerics";
 
 ReactDOM.render(
   <React.StrictMode>
