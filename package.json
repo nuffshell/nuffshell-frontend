@@ -14,15 +14,17 @@
     "zustand": "^3.2.0"
   },
   "scripts": {
-    "start": "npm-run-all build:tailwind --parallel watch:tailwind start:react",
+    "start": "npm-run-all build:tailwind --parallel start:firebase start:tailwind start:react",
     "start:react": "react-scripts start",
     "prebuild": "NODE_ENV=production run-s build:tailwind",
     "build": "react-scripts build",
     "build:tailwind": "tailwind build src/main.css -o public/main.css",
-    "watch:tailwind": "chokidar 'src/**/*.css' -c 'npm run build:tailwind'",
+    "start:tailwind": "chokidar 'src/**/*.css' -c 'npm run build:tailwind'",
+    "start:firebase": "firebase serve -p 3001",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:3001",
   "eslintConfig": {
     "extends": [
       "react-app",
