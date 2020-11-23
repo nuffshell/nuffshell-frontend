@@ -1,10 +1,11 @@
 import cx from "classnames";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   getNotificationClassNames,
   Notifier,
   useNotifier,
 } from "./features/notifications";
+import { useAuthentication } from "./features/authentication";
 import { Header } from "./pageSegments/header";
 import { HomePage } from "./pages/home";
 import { LogInPage } from "./pages/logIn";
@@ -14,6 +15,23 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   const { isNotifying } = useNotifier();
+  const { handleAuthenticationStateChange } = useAuthentication();
+  const [authenticationInitialized, setAuthenticationInitialized] = useState(
+    false
+  );
+  useEffect(() => {
+    if (authenticationInitialized) {
+      return;
+    }
+    firebase
+      .auth()
+      .onAuthStateChanged((user: any) => handleAuthenticationStateChange(user));
+    setAuthenticationInitialized(true);
+  }, [
+    authenticationInitialized,
+    setAuthenticationInitialized,
+    handleAuthenticationStateChange,
+  ]);
 
   return (
     <div className={cx("app", getNotificationClassNames(isNotifying))}>
@@ -30,7 +48,7 @@ function App() {
             <HomePage />
           </Route>
         </Switch>
-        <Footer/>
+        <Footer />
         <Notifier />
       </Router>
     </div>

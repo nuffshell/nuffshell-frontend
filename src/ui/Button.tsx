@@ -1,16 +1,24 @@
-import React, { ReactNode, MouseEvent } from "react";
+import React, { MouseEvent, ReactNode } from "react";
 import cx from "classnames";
 
-type Props = {
+interface Props {
   id?: string;
   className?: string;
-  onClick: (event: MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   children: ReactNode;
-};
+  type?: "button" | "submit" | "reset";
+}
 
-export default function Button({ id, className, children, onClick }: Props) {
+export default function Button({
+  id,
+  className,
+  children,
+  onClick,
+  type,
+}: Props) {
   return (
     <button
+      type={type || "button"}
       id={id}
       className={cx(
         className,
@@ -22,6 +30,7 @@ export default function Button({ id, className, children, onClick }: Props) {
         "shadow",
         "text-black",
         "w-24",
+        "h-10",
         "bg-yellow-400",
         "hover:bg-yellow-300"
       )}

@@ -2,10 +2,12 @@ import React from "react";
 import cx from "classnames";
 import { Link, withRouter, RouteComponentProps } from "react-router-dom";
 import { Button } from "../../ui";
+import { useAuthentication } from "../../features/authentication";
 
 function Header({ history }: RouteComponentProps) {
+  const { isLoggedIn, email } = useAuthentication();
   return (
-    <header className={cx("bg-red-800", "p-4", "flex", "content-center")}>
+    <header className={cx("bg-red-800", "p-4", "flex", "items-center")}>
       <Link
         to="/"
         className={cx(
@@ -18,18 +20,23 @@ function Header({ history }: RouteComponentProps) {
       >
         nuffshell
       </Link>
-      <Button
-        onClick={() => history.push("/log-in")}
-        className={cx("flex-initial", "mr-4")}
-      >
-        Log in
-      </Button>
-      <Button
-        onClick={() => history.push("/sign-up")}
-        className={cx("flex-initial")}
-      >
-        Sign up
-      </Button>
+      {isLoggedIn && <div className={cx("text-yellow-400")}>{email}</div>}
+      {!isLoggedIn && (
+        <>
+          <Button
+            onClick={() => history.push("/log-in")}
+            className={cx("flex-initial", "mr-4")}
+          >
+            Log in
+          </Button>
+          <Button
+            onClick={() => history.push("/sign-up")}
+            className={cx("flex-initial")}
+          >
+            Sign up
+          </Button>
+        </>
+      )}
     </header>
   );
 }

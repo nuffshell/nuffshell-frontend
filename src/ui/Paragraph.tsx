@@ -1,11 +1,11 @@
 import cx from "classnames";
 import React, { ReactNode } from "react";
 
-type Props = {
+interface Props {
   id?: string;
   className?: string;
   children: ReactNode;
-};
+}
 
 export default function Paragraph({ id, className, children }: Props) {
   return (

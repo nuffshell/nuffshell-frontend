@@ -1,9 +1,9 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
 
-type Props = {
+interface Props {
   children: ReactNode;
-};
+}
 
 export default function Main({ children }: Props) {
   return (
