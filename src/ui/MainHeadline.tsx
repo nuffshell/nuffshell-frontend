@@ -1,31 +1,28 @@
 import cx from "classnames";
 import React, { ReactNode } from "react";
+import Box from "./Box";
 
-type Props = {
+interface Props {
   id?: string;
   className?: string;
   children: ReactNode;
-};
+}
 
 export default function MainHeadline({ id, className, children }: Props) {
   return (
-    <h1
-      id={id}
-      className={cx(
-        className,
-        "text-xl",
-        "md:text-3xl",
-        "font-bold",
-        "text-red-800",
-        "border-solid",
-        "border-4",
-        "border-red-200",
-        "p-4",
-        "rounded-lg",
-        "mb-6"
-      )}
-    >
-      {children}
-    </h1>
+    <Box className={cx("mb-6")}>
+      <h1
+        id={id}
+        className={cx(
+          className,
+          "font-display",
+          "text-xl",
+          "md:text-3xl",
+          "text-red-800"
+        )}
+      >
+        {children}
+      </h1>
+    </Box>
   );
 }

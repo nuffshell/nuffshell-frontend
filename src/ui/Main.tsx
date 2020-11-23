@@ -1,20 +1,23 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
 
-type Props = {
+interface Props {
   children: ReactNode;
-};
+}
 
 export default function Main({ children }: Props) {
   return (
     <main
       className={cx(
-        "p-4",
-        "sm:p-8",
-        "pb-8",
+        "pt-4",
+        "pl-4",
+        "pr-4",
+        "sm:pt-8",
+        "sm:pl-8",
+        "sm:pr-8",
+        "pb-16",
         "mx-auto",
-        "max-w-3xl",
-        "lg:max-w-6xl"
+        "max-w-3xl"
       )}
     >
       {children}

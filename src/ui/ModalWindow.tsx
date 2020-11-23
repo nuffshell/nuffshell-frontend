@@ -1,10 +1,10 @@
 import cx from "classnames";
 import React, { ReactNode } from "react";
 
-type Props = {
+interface Props {
   title: string;
   children: ReactNode;
-};
+}
 
 export default function ModalWindow({ title, children }: Props) {
   return (
