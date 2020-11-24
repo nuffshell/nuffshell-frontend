@@ -397,6 +397,10 @@ export default function HomePage() {
         dream - then you bring it into your world. Maybe there's a happy little
         Evergreen that lives here.
       </Paragraph>
+      <Paragraph>
+        This paragraph was added to check it automatic deployment through GitHub
+        works.
+      </Paragraph>
     </Main>
   );
 }
