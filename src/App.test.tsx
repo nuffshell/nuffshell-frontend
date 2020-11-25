@@ -4,6 +4,6 @@ import React from "react";
 
 test("renders title", () => {
   render(<App />);
-  const titleElement = screen.getByText(/nuffshell/i);
+  const titleElement = screen.getByText(/Nuffshell/i);
   expect(titleElement).toBeInTheDocument();
 });

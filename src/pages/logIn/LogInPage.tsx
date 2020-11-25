@@ -40,7 +40,7 @@ export default function LogInPage() {
   return (
     <Main>
       <MainHeadline>
-        {status === "new" && <>Log in to nuffshell</>}
+        {status === "new" && <>Log in to Nuffshell</>}
         {status.startsWith("error") && <>Something went wrong…</>}
         {status === "success" && <>Success!</>}
       </MainHeadline>
@@ -94,7 +94,7 @@ export default function LogInPage() {
       {status === "new" && isLoggedIn && <p>You are already logged in.</p>}
       {status === "error/user-not-found" && (
         <p>
-          Sorry, there is no nuffshell user with email address <em>{email}</em>.
+          Sorry, there is no Nuffshell user with email address <em>{email}</em>.
         </p>
       )}
       {status === "error/wrong-password" && (
@@ -107,7 +107,7 @@ export default function LogInPage() {
         </p>
       )}
       {status === "success" && (
-        <p>You can now use nuffshell as an authenticated user.</p>
+        <p>You can now use Nuffshell as an authenticated user.</p>
       )}
     </Main>
   );

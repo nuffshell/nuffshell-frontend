@@ -61,7 +61,7 @@ export default function SignUpPage() {
   return (
     <Main>
       <MainHeadline>
-        {status === "new" && <>Sign up for nuffshell</>}
+        {status === "new" && <>Sign up for Nuffshell</>}
         {status.startsWith("error") && <>Something went wrong…</>}
         {status === "success" && <>Success!</>}
       </MainHeadline>
@@ -148,7 +148,7 @@ export default function SignUpPage() {
         </p>
       )}
       {status === "success" && (
-        <p>You can now use nuffshell as an authenticated user.</p>
+        <p>You can now use Nuffshell as an authenticated user.</p>
       )}
     </Main>
   );
