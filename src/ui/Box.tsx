@@ -4,18 +4,21 @@ import React, { ReactNode } from "react";
 interface Props {
   id?: string;
   className?: string;
+  accent?: boolean;
   children: ReactNode;
 }
 
-export default function Box({ id, className, children }: Props) {
+export default function Box({ id, className, accent, children }: Props) {
   return (
     <div
       id={id}
       className={cx(
         className,
-        "border-solid",
-        "border-4",
-        "border-red-200",
+        accent && "bg-green",
+        accent && "shadow",
+        !accent && "border-solid",
+        !accent && "border-2",
+        !accent && "border-green-light",
         "p-4",
         "rounded-lg"
       )}

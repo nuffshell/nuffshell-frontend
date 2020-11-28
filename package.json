@@ -1,5 +1,6 @@
 {
   "name": "nuffshell-frontend",
+  "description": "The web frontend for Nuffshell; React single page application hosted on Firebase",
   "version": "0.1.0",
   "private": true,
   "scripts": {

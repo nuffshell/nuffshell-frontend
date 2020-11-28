@@ -6,6 +6,7 @@ interface Props {
   className?: string;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   children: ReactNode;
+  accent?: boolean;
   type?: "button" | "submit" | "reset";
 }
 
@@ -14,6 +15,7 @@ export default function Button({
   className,
   children,
   onClick,
+  accent,
   type,
 }: Props) {
   return (
@@ -28,11 +30,11 @@ export default function Button({
         "pb-1",
         "rounded",
         "shadow",
-        "text-black",
+        accent ? "text-black" : "text-white",
         "w-24",
         "h-10",
-        "bg-yellow-400",
-        "hover:bg-yellow-300"
+        accent ? "bg-yellow" : "bg-green",
+        accent ? "hover:bg-yellow-light" : "hover:bg-green-light"
       )}
       onClick={onClick}
     >

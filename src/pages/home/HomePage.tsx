@@ -4,7 +4,7 @@ import React from "react";
 export default function HomePage() {
   return (
     <Main>
-      <MainHeadline>Welcome to nuffshell!</MainHeadline>
+      <MainHeadline>Welcome to Nuffshell!</MainHeadline>
       <Paragraph>
         Just pretend you are a whisper floating across a mountain. From all of
         us here, I want to wish you happy painting and God bless, my friends.
@@ -396,10 +396,6 @@ export default function HomePage() {
         is up to you to make friends with the little rascals. You create the
         dream - then you bring it into your world. Maybe there's a happy little
         Evergreen that lives here.
-      </Paragraph>
-      <Paragraph>
-        This paragraph was added to check it automatic deployment through GitHub
-        works.
       </Paragraph>
     </Main>
   );

@@ -1,6 +1,6 @@
 # nuffshell-frontend
 
-The web frontend for *nuffshell*. React single page application hosted on Firebase.
+The web frontend for *Nuffshell*. React single page application hosted on Firebase.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
