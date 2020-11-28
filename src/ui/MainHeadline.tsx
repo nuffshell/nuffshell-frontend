@@ -16,7 +16,7 @@ export default function MainHeadline({
   children,
 }: Props) {
   return (
-    <Box className={cx("mb-6")} accent={accent}>
+    <Box className={cx("mb-6","pb-2")} accent={accent}>
       <h1
         id={id}
         className={cx(

@@ -28,7 +28,7 @@ function Header({ history }: RouteComponentProps) {
         />
         Nuffshell
       </Link>
-      {isLoggedIn && <div className={cx("text-yellow-400")}>{email}</div>}
+      {isLoggedIn && <div className={cx("text-brown-lightest")}>{email}</div>}
       {!isLoggedIn && (
         <>
           <Button
