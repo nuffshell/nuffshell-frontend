@@ -26,7 +26,7 @@ function Header({ history }: RouteComponentProps) {
           src="/images/nuffshell-icon-no-bgr_small.png"
           alt="Nuffshell logo"
         />
-        Nuffshell
+        <div className={cx("pt-1")}>Nuffshell</div>
       </Link>
       {isLoggedIn && <div className={cx("text-brown-lightest")}>{email}</div>}
       {!isLoggedIn && (
