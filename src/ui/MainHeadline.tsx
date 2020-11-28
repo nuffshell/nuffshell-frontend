@@ -22,8 +22,7 @@ export default function MainHeadline({
         className={cx(
           className,
           "font-display",
-          "text-2xl",
-          "md:text-3xl",
+          "text-3xl",
           accent ? "text-white" : "text-green"
         )}
       >
