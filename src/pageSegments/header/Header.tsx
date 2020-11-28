@@ -7,17 +7,25 @@ import { useAuthentication } from "../../features/authentication";
 function Header({ history }: RouteComponentProps) {
   const { isLoggedIn, email } = useAuthentication();
   return (
-    <header className={cx("bg-red-800", "p-4", "flex", "items-center")}>
+    <header className={cx("bg-brown-dark", "p-4", "flex", "items-center")}>
       <Link
         to="/"
         className={cx(
           "flex-1",
-          "text-yellow-400",
+          "text-yellow",
           "hover:text-yellow-300",
           "font-display",
-          "text-3xl"
+          "font-light",
+          "text-3xl",
+          "items-center",
+          "flex"
         )}
       >
+        <img
+          className={cx("w-12", "mr-2")}
+          src="/images/nuffshell-icon-no-bgr_small.png"
+          alt="Nuffshell logo"
+        />
         Nuffshell
       </Link>
       {isLoggedIn && <div className={cx("text-yellow-400")}>{email}</div>}
@@ -26,12 +34,14 @@ function Header({ history }: RouteComponentProps) {
           <Button
             onClick={() => history.push("/log-in")}
             className={cx("flex-initial", "mr-4")}
+            accent
           >
             Log in
           </Button>
           <Button
             onClick={() => history.push("/sign-up")}
             className={cx("flex-initial")}
+            accent
           >
             Sign up
           </Button>

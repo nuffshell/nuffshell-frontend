@@ -39,7 +39,7 @@ export default function LogInPage() {
 
   return (
     <Main>
-      <MainHeadline>
+      <MainHeadline accent>
         {status === "new" && <>Log in to Nuffshell</>}
         {status.startsWith("error") && <>Something went wrong…</>}
         {status === "success" && <>Success!</>}

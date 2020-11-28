@@ -5,12 +5,18 @@ import Box from "./Box";
 interface Props {
   id?: string;
   className?: string;
+  accent?: boolean;
   children: ReactNode;
 }
 
-export default function MainHeadline({ id, className, children }: Props) {
+export default function MainHeadline({
+  id,
+  className,
+  accent,
+  children,
+}: Props) {
   return (
-    <Box className={cx("mb-6")}>
+    <Box className={cx("mb-6")} accent={accent}>
       <h1
         id={id}
         className={cx(
@@ -18,7 +24,7 @@ export default function MainHeadline({ id, className, children }: Props) {
           "font-display",
           "text-xl",
           "md:text-3xl",
-          "text-red-800"
+          accent ? "text-white" : "text-green"
         )}
       >
         {children}

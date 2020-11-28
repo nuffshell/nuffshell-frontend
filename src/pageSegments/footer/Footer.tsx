@@ -7,9 +7,9 @@ export default function Footer() {
       className={cx(
         "absolute",
         "bottom-0",
-        "bg-red-800",
+        "bg-brown-dark",
         "p-4",
-        "text-yellow-400",
+        "text-brown-lightest",
         "min-w-full"
       )}
     >

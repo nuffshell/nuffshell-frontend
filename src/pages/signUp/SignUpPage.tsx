@@ -60,7 +60,7 @@ export default function SignUpPage() {
 
   return (
     <Main>
-      <MainHeadline>
+      <MainHeadline accent>
         {status === "new" && <>Sign up for Nuffshell</>}
         {status.startsWith("error") && <>Something went wrong…</>}
         {status === "success" && <>Success!</>}
