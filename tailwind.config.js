@@ -30,6 +30,9 @@ module.exports = {
       black: {
         DEFAULT: "#000000",
       },
+      red: {
+        DEFAULT: "#cc3a32"
+      }
     },
   },
   variants: {

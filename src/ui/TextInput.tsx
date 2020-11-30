@@ -1,5 +1,6 @@
-import React, { MouseEvent, ChangeEvent, ForwardedRef, forwardRef } from "react";
+import React, { ChangeEvent, MouseEvent } from "react";
 import cx from "classnames";
+import { Input } from "usetheform";
 
 interface Props {
   id?: string;
@@ -8,25 +9,31 @@ interface Props {
   type?: "text" | "email" | "password";
   maxLength?: number;
   required?: boolean;
-  value?: string;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  validation?: any;
 }
 
-function TextInput(
-  { id, className, type, maxLength, required, value, onChange }: Props,
-  ref: ForwardedRef<HTMLInputElement>
-) {
+export default function TextInput({
+  id,
+  className,
+  type,
+  maxLength,
+  required,
+  onChange,
+  validation,
+}: Props) {
+  const validationProp = validation || {};
   return (
-    <input
+    <Input
       id={id}
+      name={id}
       className={cx(className, "shadow", "rounded")}
       type={type || "text"}
       maxLength={maxLength}
       required={required || false}
-      value={value}
       onChange={onChange}
-      ref={ref}
+      touched
+      {...validationProp}
     />
   );
 }
-export default forwardRef(TextInput);
