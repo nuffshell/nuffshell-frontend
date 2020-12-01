@@ -6,14 +6,14 @@ import {
   TextInput,
   ValidationError,
 } from "../../ui";
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import cx from "classnames";
 import { useAuthentication } from "../../features/authentication";
 import Form, { useValidation } from "usetheform";
 import {
-  validateRequiredPassword,
-  validateRequiredEmail,
   validateEmail,
+  validateRequiredEmail,
+  validateRequiredPassword,
 } from "../utils/validation";
 
 interface FormState {
@@ -27,7 +27,6 @@ const initialFormState: FormState = {
 };
 
 export default function LogInPage() {
-  const [formState, setFormState] = useState(initialFormState);
   const [emailStatus, emailValidation] = useValidation([
     validateRequiredEmail,
     validateEmail,
@@ -35,10 +34,6 @@ export default function LogInPage() {
   const [passwordStatus, passwordValidation] = useValidation([
     validateRequiredPassword,
   ]);
-  const updateFormState = useCallback(
-    (nextFormState) => setFormState(nextFormState),
-    []
-  );
   const { isLoggedIn } = useAuthentication();
   const [status, setStatus] = useState("new");
 
@@ -48,10 +43,8 @@ export default function LogInPage() {
     } catch (error) {
       switch (error.code) {
         case "auth/user-not-found":
-          setStatus("error/user-not-found");
-          break;
         case "auth/wrong-password":
-          setStatus("error/wrong-password");
+          setStatus("error/bad-credentials");
           break;
         default:
           setStatus("error/unknown-cause");
@@ -69,13 +62,7 @@ export default function LogInPage() {
         {status === "success" && <>Success!</>}
       </MainHeadline>
       {status === "new" && !isLoggedIn && (
-        <Form
-          onSubmit={handleSubmit}
-          onReset={updateFormState}
-          onInit={updateFormState}
-          onChange={updateFormState}
-          initialState={initialFormState}
-        >
+        <Form onSubmit={handleSubmit} initialState={initialFormState}>
           <Box
             className={cx(
               "grid",
@@ -127,14 +114,8 @@ export default function LogInPage() {
         </Form>
       )}
       {status === "new" && isLoggedIn && <p>You are already logged in.</p>}
-      {status === "error/user-not-found" && (
-        <p>
-          Sorry, there is no Nuffshell user with email address{" "}
-          <em>{formState.email}</em>.
-        </p>
-      )}
-      {status === "error/wrong-password" && (
-        <p>Sorry, that password is incorrect.</p>
+      {status === "error/bad-credentials" && (
+        <p>Sorry, email or password are incorrect.</p>
       )}
       {status === "error/unknown-cause" && (
         <p>

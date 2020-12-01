@@ -6,16 +6,16 @@ import {
   TextInput,
   ValidationError,
 } from "../../ui";
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import cx from "classnames";
 import { useAuthentication } from "../../features/authentication";
 import Form, { Collection, useValidation } from "usetheform";
 import {
+  PasswordState,
   validateEmail,
+  validatePasswords,
   validateRequiredEmail,
   validateRequiredPasswords,
-  validatePasswords,
-  PasswordState,
 } from "../utils/validation";
 
 interface FormState {
@@ -32,7 +32,6 @@ const initialFormState: FormState = {
 };
 
 export default function SignUpPage() {
-  const [, setFormState] = useState(initialFormState);
   const [emailStatus, emailValidation] = useValidation([
     validateRequiredEmail,
     validateEmail,
@@ -41,10 +40,6 @@ export default function SignUpPage() {
     validateRequiredPasswords,
     validatePasswords,
   ]);
-  const updateFormState = useCallback(
-    (nextFormState) => setFormState(nextFormState),
-    []
-  );
   const { isLoggedIn } = useAuthentication();
   const [status, setStatus] = useState("new");
 
@@ -77,13 +72,7 @@ export default function SignUpPage() {
         {status === "success" && <>Success!</>}
       </MainHeadline>
       {status === "new" && !isLoggedIn && (
-        <Form
-          onSubmit={handleSubmit}
-          onReset={updateFormState}
-          onInit={updateFormState}
-          onChange={updateFormState}
-          initialState={initialFormState}
-        >
+        <Form onSubmit={handleSubmit} initialState={initialFormState}>
           <Box
             className={cx(
               "grid",
