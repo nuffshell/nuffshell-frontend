@@ -36,7 +36,7 @@ export default function SignUpPage() {
     validateRequiredEmail,
     validateEmail,
   ]);
-  const [passwordStatus, passwordValidation] = useValidation([
+  const [passwordsStatus, passwordsValidation] = useValidation([
     validateRequiredPasswords,
     validatePasswords,
   ]);
@@ -100,9 +100,9 @@ export default function SignUpPage() {
               validation={emailValidation}
               maxLength={200}
             />
-            {passwordStatus.error && (
+            {passwordsStatus.error && (
               <ValidationError className={cx("col-span-3")}>
-                {passwordStatus.error}
+                {passwordsStatus.error}
               </ValidationError>
             )}
             <label
@@ -111,7 +111,7 @@ export default function SignUpPage() {
             >
               Choose a password:
             </label>
-            <Collection name="passwords" object {...passwordValidation}>
+            <Collection name="passwords" object {...passwordsValidation}>
               <TextInput
                 id="password"
                 className={cx("col-span-2")}

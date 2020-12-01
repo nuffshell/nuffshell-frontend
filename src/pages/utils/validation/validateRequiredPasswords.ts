@@ -9,5 +9,5 @@ export default function validateRequiredPasswords({
     password2 &&
     password2.trim() !== ""
     ? undefined
-    : "Please fill out the password fields!";
+    : "Please fill out both password fields!";
 }
