@@ -49,7 +49,7 @@ export default function LogInPage() {
         default:
           setStatus("error/unknown-cause");
       }
-      return;
+      throw error;
     }
     setStatus("success");
   }

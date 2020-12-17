@@ -3,7 +3,7 @@ import PasswordState from "./PasswordState";
 export default function validateRequiredPasswords({
   password,
   password2,
-}: PasswordState) {
+}: PasswordState = {}) {
   return password &&
     password.trim() !== "" &&
     password2 &&

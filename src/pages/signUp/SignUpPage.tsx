@@ -59,7 +59,7 @@ export default function SignUpPage() {
         default:
           setStatus("error/unknown-cause");
       }
-      return;
+      throw error;
     }
     setStatus("success");
   }
