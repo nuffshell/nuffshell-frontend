@@ -1,38 +1,55 @@
-import { Box, Button, Main, MainHeadline, TextInput } from "../../ui";
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import {
+  Box,
+  Button,
+  Main,
+  MainHeadline,
+  TextInput,
+  ValidationError,
+} from "../../ui";
+import React, { useState } from "react";
 import cx from "classnames";
 import { useAuthentication } from "../../features/authentication";
+import { Form, useValidation } from "usetheform";
+import {
+  validateEmail,
+  validateRequiredEmail,
+  validateRequiredPassword,
+} from "../utils/validation";
+
+interface FormState {
+  email: string;
+  password: string;
+}
+
+const initialFormState: FormState = {
+  email: "",
+  password: "",
+};
 
 export default function LogInPage() {
+  const [emailStatus, emailValidation] = useValidation([
+    validateRequiredEmail,
+    validateEmail,
+  ]);
+  const [passwordStatus, passwordValidation] = useValidation([
+    validateRequiredPassword,
+  ]);
   const { isLoggedIn } = useAuthentication();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [status, setStatus] = useState("new");
 
-  function handleChangeEmail(event: ChangeEvent<HTMLInputElement>) {
-    setEmail(event.target.value);
-  }
-
-  function handleChangePassword(event: ChangeEvent<HTMLInputElement>) {
-    setPassword(event.target.value);
-  }
-
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  async function handleSubmit({ email, password }: FormState) {
     try {
       await window.firebase.auth().signInWithEmailAndPassword(email, password);
     } catch (error) {
       switch (error.code) {
         case "auth/user-not-found":
-          setStatus("error/user-not-found");
-          break;
         case "auth/wrong-password":
-          setStatus("error/wrong-password");
+          setStatus("error/bad-credentials");
           break;
         default:
           setStatus("error/unknown-cause");
       }
-      return;
+      throw error;
     }
     setStatus("success");
   }
@@ -45,7 +62,7 @@ export default function LogInPage() {
         {status === "success" && <>Success!</>}
       </MainHeadline>
       {status === "new" && !isLoggedIn && (
-        <form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} initialState={initialFormState}>
           <Box
             className={cx(
               "grid",
@@ -56,6 +73,11 @@ export default function LogInPage() {
               "md:pr-24"
             )}
           >
+            {emailStatus.error && (
+              <ValidationError className={cx("col-span-3")}>
+                {emailStatus.error}
+              </ValidationError>
+            )}
             <label
               className={cx("col-span-2", "sm:col-span-1")}
               htmlFor="email"
@@ -65,12 +87,14 @@ export default function LogInPage() {
             <TextInput
               id="email"
               className={cx("col-span-2")}
-              type="email"
-              required
+              validation={emailValidation}
               maxLength={200}
-              value={email}
-              onChange={handleChangeEmail}
             />
+            {passwordStatus.error && (
+              <ValidationError className={cx("col-span-3")}>
+                {passwordStatus.error}
+              </ValidationError>
+            )}
             <label
               className={cx("col-span-2", "sm:col-span-1")}
               htmlFor="password"
@@ -81,24 +105,17 @@ export default function LogInPage() {
               id="password"
               className={cx("col-span-2")}
               type="password"
+              validation={passwordValidation}
               maxLength={200}
-              required
-              value={password}
-              onChange={handleChangePassword}
             />
             <div />
             <Button type="submit">Log in</Button>
           </Box>
-        </form>
+        </Form>
       )}
       {status === "new" && isLoggedIn && <p>You are already logged in.</p>}
-      {status === "error/user-not-found" && (
-        <p>
-          Sorry, there is no Nuffshell user with email address <em>{email}</em>.
-        </p>
-      )}
-      {status === "error/wrong-password" && (
-        <p>Sorry, that password is incorrect.</p>
+      {status === "error/bad-credentials" && (
+        <p>Sorry, email or password are incorrect.</p>
       )}
       {status === "error/unknown-cause" && (
         <p>
