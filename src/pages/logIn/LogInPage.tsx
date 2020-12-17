@@ -9,7 +9,7 @@ import {
 import React, { useState } from "react";
 import cx from "classnames";
 import { useAuthentication } from "../../features/authentication";
-import Form, { useValidation } from "usetheform";
+import { Form, useValidation } from "usetheform";
 import {
   validateEmail,
   validateRequiredEmail,

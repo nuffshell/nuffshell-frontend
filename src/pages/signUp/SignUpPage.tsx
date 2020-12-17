@@ -9,7 +9,7 @@ import {
 import React, { useState } from "react";
 import cx from "classnames";
 import { useAuthentication } from "../../features/authentication";
-import Form, { Collection, useValidation } from "usetheform";
+import { Form, Collection, useValidation } from "usetheform";
 import {
   PasswordState,
   validateEmail,
@@ -111,7 +111,7 @@ export default function SignUpPage() {
             >
               Choose a password:
             </label>
-            <Collection name="passwords" object {...passwordsValidation}>
+            <Collection touched name="passwords" object {...passwordsValidation}>
               <TextInput
                 id="password"
                 className={cx("col-span-2")}
